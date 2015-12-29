@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "识途发布国际版Nature Creator"
+title:  "识途发布国际版 Creator"
 date:   2015-10-28 17:33:33 +0800
 categories: ubirouting
 description: "我们今天宣布正式发布基于iOS平台的英文版 识途 Creator"
