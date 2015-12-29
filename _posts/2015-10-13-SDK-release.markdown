@@ -1,17 +1,19 @@
 ---
 layout: post
-title:  "识途发布室内定位SDK 1.0"
+title:  "识途发布室内定位SDK v0.1"
 date:   2015-10-13 17:33:33 +0800
 categories: ubirouting
-description: "今天我们宣布在iOS和Android平台上全面发布各种引擎的SDK，包括：地磁SDK、Wi-Fi SDK和矢量地图SDK。"
+description: "今天我们宣布在iOS和Android平台上全面发布各种引擎的SDK，包括：地磁SDK、Wi-Fi SDK"
+author: "LiKe"
 ---
 
-```
-System.out.println("hello, ubirouting SDK.");
-```
+    System.out.println("hello, ubirouting SDK.");
+
+    mLocationManager = ShituLocationManager.newManager(this, parameters);
+    mLocationManager.setOnNatureListener(this);
 
 
-今天我们宣布在iOS和Android平台上全面发布各种引擎的SDK，包括：地磁SDK、Wi-Fi SDK和矢量地图SDK。这是北京识途科技有限公司继不久前发布*识途 Creator*采集和定位工具以来的又一重大成果。这些成果是我们长期坚持脚踏实地的研究的最好报答。
+今天我们宣布在iOS和Android平台上全面发布各种引擎的SDK，包括：地磁SDK、Wi-Fi SDK。这是北京识途科技有限公司继不久前发布*识途 Creator*采集和定位工具以来的又一重大成果。这些成果是我们长期坚持脚踏实地的研究的最好报答。
 
 今天发布的SDK是我们的核心产品“识途云”构架中的一部分。
 

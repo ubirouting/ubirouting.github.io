@@ -1,0 +1,160 @@
+---
+layout: post
+title:  "Shitu Indoor Positioning SDK v0.14 released"
+date:   2015-12-25 17:33:33 +0800
+categories: ubirouting
+description: "iOS、Android Positioning SDK v0.14 Released"
+author: "Yang Tao"
+---
+
+在经历了几个月的持续优化后，我们的定位效果有了显著的提升。开发者可以通过注册申请[申请方法](http://open.ubirouting.com/client/detail/5)，来获取最新的SDK体验。
+
+新的SDK融合了定位方式，您可自由配置和选择：
+
+- 纯地磁定位
+
+- 纯WiFi定位（仅限Android)
+
+- 综合智能定位（推荐）
+
+其中综合智能定位，融合各种定位技术的优势，可提供最佳的定位体验，也是我们推荐使用的定位方式;
+
+详细的开发文档请您参阅[识途SDK](http://open.ubirouting.com/client)。
+
+###Android示例代码：
+
+	public class LocationTestActivity extends Activity implements ShituLocationListener {
+	    private ShituLocationManager mLocationManager;
+
+	    @Override
+	    protected void onCreate(Bundle savedInstanceState) {
+	        super.onCreate(savedInstanceState);
+	        //分别代入参数，store，由ShituStoreDatas获取的建筑对象，初始楼层（目前SDK版本暂不支持楼层判断）
+	        //所显示的地图的像素宽度以及高度，以及定位模式        
+	        ShituLocationParameters parameters = new ShituLocationParameters(store, (short)6, mapWidthPx, mapHeightPx, ShituLocationManager.LOC_MAG_ONLY);
+
+	        mLocationManager = ShituLocationManager.newManager(this, parameters);
+	        mLocationManager.setOnNatureListener(this);
+	    }
+
+	    @Override
+	    protected void onResume() {
+	        super.onResume();
+	        mLocationManager.onResume();
+	        mLocationManager.start();
+	    }
+
+	    @Override
+	    protected void onPause() {
+	        super.onPause();
+	        mLocationManager.onPause();
+	    }
+
+	    @Override
+	    protected void onDestroy() {
+	        super.onDestroy();
+	        mLocationManager.onDestroy();
+	    }
+
+	    @Override
+	    public void onGetLocation(Position position) {
+	        //获得坐标
+
+	    }
+
+	    @Override
+	    public void onGetStatus(int status) {
+	        //获得定位状态，包括
+	        //STATUS_START_LOCATE: 定位开始，请用户沿当前道路持续行走即可获取位置
+	        //STATUS_FIRST_RELIABLE_LOCATE: 获取第一个相对可靠位置
+	        //STATUS_MEDIUM_ACCURACY: 传感器精度一般，可进行定位，建议进矫正
+	        //STATUS_UNRELIABLE_ACCURACY: 传感器精度不可靠，必须进行矫正方可正确定位
+	        //STATUS_FAILED_TO_GETLOCATION_MANYTIMES: 长时间无法获取位置，建议重新行走定位
+	        //STATUS_RECONNECT_SUCCESS, 重新连接成功
+
+	    }
+
+	    @Override
+	    public void onGetAngle(int angle) {
+	        //获得角度
+	    }
+
+	    @Override
+	    public void onException(String e, int errorType) {
+	        //异常
+	    }
+	}
+
+###iOS示例代码:
+
+	#import "SHTNatureParemeters.h"
+	#import "SHTLocationCloud.h"
+
+	//使用SHTLocationCloudDelegate和SHTLocationRespondeDelegate代理。一个是负责返回坐标，另一个负责接收网络连接错误信息
+	@interface ViewController : UIViewController<SHTLocationDelegate>
+
+	...
+
+	//启动定位
+	- (void)startLocate
+	{
+	    //定义初始位置。若使用ibeacon混合定位，或纯iBeacon定位，不需要指定初始位置，即x,y均传入-1即可
+	    struct IndoorPosition initPosition;
+	    initPosition.x = -1;
+	    initPosition.y = -1;
+
+	    //需传入每个楼层的地图的像素宽度和高度，用以进行边界判断，该高宽需和采集时使用的地图高宽一致
+	    struct MapSize * mapSize = malloc(sizeof(struct MapSize) * 3);
+	    mapSize[0].floor = 1;
+	    mapSize[0].width = 1000;
+	    mapSize[0].height = 1000;
+
+	    mapSize[1].floor = 2;
+	    mapSize[1].width = 1000;
+	    mapSize[1].height = 1000;
+
+	    mapSize[2].floor = 3;
+	    mapSize[2].width = 1000;
+	    mapSize[2].height = 1000;
+
+	    //初始化定位参数， storeTest为2.2节中获取的任意store
+	    SHTLocationParameters * parameters = [SHTLocationParameters alloc]initWithStore:storeTest AndInitPosition:initPosition AndKey:@"youkey" AndMapSize:mapSize AndLocType:LOCTYPE_IBEACON_ONLY];
+
+	    //实例化一个locationManager对象
+	    _locationManager = [SHTLocationManager buildLocationManagerBy:para];
+
+	    //设置代理
+	    locationManager.delegate = self;
+	    locationManager.netDelegate = self;
+
+	    //开启定位，定位结果将以代理的形式返回
+	    [self.locationManager start];
+	}
+
+	...
+	// 实现代理方法
+
+	// 在此更新坐标
+	- (void)getLocation:(SHTPosition *)position
+	{
+	    // 在这里更新坐标
+	    // position.x和position.y
+	    NSLog(@"position is %@", position);
+	}
+
+	- (void)getAngle:(int)angle
+	{
+	    //在这里更新角度（指南针）
+	}
+
+	- (void)getStatus:(int)status Message:(NSString *)message
+	{
+	    //再这里获取状态信息。
+
+	    //识途地磁定位的特点是需要用户行走一段距离，供服务器计算特征，只有当获取到的status==STATUS_FIRST_RELIABLE_POSITION时，该位置才具有较高的可靠性，之前的位置坐标均可丢弃。在获得上述状态时，需提示用户继续行走；
+
+	    NSLog(@"getStatus %d, %@", status, message);
+	}
+
+	@end
+
