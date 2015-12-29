@@ -93,10 +93,12 @@ blockquote {
  */
 pre,
 code {
-  font-size: 15px;
-  border: 1px solid #bdf0ff;
+  font-family: monospace;
+  font-size: 12px;
+  border: 1px solid #111;
+  color: #fff;
   border-radius: 3px;
-  background-color: #eef; }
+  background-color: #373737; }
 
 code {
   padding: 1px 5px; }
