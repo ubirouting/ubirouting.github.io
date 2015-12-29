@@ -149,24 +149,25 @@ pre {
  * Site header
  */
 .site-header {
-  border-top: 5px solid #00baf0;
-  border-bottom: 1px solid #bdf0ff;
-  min-height: 56px;
+  border-bottom: 1px solid #e6e6e6;
+  min-height: 80px;
   position: relative; }
 
 .site-title {
-  font-size: 26px;
-  font-weight: 300;
-  line-height: 56px;
-  letter-spacing: -1px;
+  display: block;
+  width: 120px;
+  height: 50px;
+  margin-top: 15px;
   margin-bottom: 0;
+  background: url(http://ubirouting.com/img/logo.png) no-repeat;
   float: left; }
   .site-title, .site-title:visited {
     color: #00baf0; }
 
 .site-nav {
   float: right;
-  line-height: 56px; }
+  font-size: 14px;
+  line-height: 80px; }
   .site-nav .menu-icon {
     display: none; }
   .site-nav .page-link {
