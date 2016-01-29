@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "识途矢量地图APP UbiMap 正式上线"
-date:   2015-09-24 17:33:33 +0800
+date:   2016-01-29 18:27:33 +0800
 categories: ubirouting
 description: "识途近日正式发布矢量地图的演示APP - 识途UbiMap。"
 author: "LiKe"
