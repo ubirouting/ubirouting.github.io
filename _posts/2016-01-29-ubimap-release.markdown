@@ -9,7 +9,7 @@ author: "LiKe"
 
 识途近日正式发布矢量地图的演示APP - 识途UbiMap。打开识途UbiMap，您可以看到包括商场、停车场、度假中心、机场等多种场景在内的精美矢量地图。在这些矢量图中，你可以任意切换楼层、进行路径规划和导航，充分体验识途矢量地图引擎的强大。
 
-![alt phone](http://ubirouting.com/imageUse/ubimapdemo.png)
+![alt phone](http://ubirouting.com/imageUse/UbiMap.gif)
 
 识途UbiMap将在不久后上线北京最大的50家商场的室内地图，敬请期待。
 
