@@ -13,7 +13,6 @@ author: "LiKe"
 
 ![alt phone](http://ubirouting.com/imageUse/ubimapdemo.png)
 
-
 ###为什么我们需要矢量地图？
 
 矢量地图SDK供APP使用，通过识途UbiMap SDK可以在智能手机上实现多种功能，比如旋转、缩放、路径规划、楼层切换、弹窗等，充分满足室内各种位置服务的开发需要。
@@ -30,7 +29,6 @@ author: "LiKe"
 - 高效地绘图机制
 
 ![alt phone](http://ubirouting.com/imageUse/ubimapmarks.png)
-
 
 ###如何使用识途的矢量引擎？
 识途研发了强大的矢量地图引擎来支持以上各种功能。通过调用UbiMap SDK，开发者可以自由使用已经绘制好的识途矢量地图。此外，识途还拥有高效的制图工具，对于中型商场可以在一日内完成室内矢量地图的绘制。
