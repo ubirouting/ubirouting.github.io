@@ -3,7 +3,7 @@ layout: post
 title:  "报名参加微软室内定位大赛"
 date:   2016-03-01 17:33:33 +0800
 categories: ubirouting
-description: "微软世界室内定位大赛（Microsoft Indoor Localization Competition）是全球最具盛名的室内定位技术的比赛之一"
+description: "微软世界室内定位大赛是全球最具盛名的室内定位技术的比赛之一"
 author: "LiKe"
 ---
 
